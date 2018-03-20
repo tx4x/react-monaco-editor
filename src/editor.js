@@ -108,6 +108,12 @@ class MonacoEditor extends React.Component {
           context.window.module = undefined;
           // workaround monaco-typescript not understanding the environment
           context.window.process.browser = true;
+        }else{
+            if (requireConfig.baseUrl) {
+                context.require.config({
+                    baseUrl: requireConfig.baseUrl
+                });
+            }
         }
 
         if (requireConfig.paths && requireConfig.paths.vs && !inElectron) {
